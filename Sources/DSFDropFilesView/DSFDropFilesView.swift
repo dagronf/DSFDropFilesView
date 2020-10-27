@@ -48,8 +48,8 @@ private extension NSNotification.Name {
 		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
 		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
 
-		s.setHuggingPriority(.defaultLow, for: .horizontal)
-		s.setHuggingPriority(.defaultLow, for: .vertical)
+		s.setHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
+		s.setHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
 
 		s.setContentCompressionResistancePriority(.required, for: .horizontal)
 		s.setContentCompressionResistancePriority(.required, for: .vertical)
