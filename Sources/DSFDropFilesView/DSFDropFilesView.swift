@@ -45,8 +45,8 @@ private extension NSNotification.Name {
 		s.orientation = .vertical
 		s.spacing = 3
 		s.alignment = .centerX
-		s.setContentHuggingPriority(.defaultLow, for: .horizontal)
-		s.setContentHuggingPriority(.defaultLow, for: .vertical)
+		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
+		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
 
 		s.setHuggingPriority(.defaultLow, for: .horizontal)
 		s.setHuggingPriority(.defaultLow, for: .vertical)
