@@ -725,6 +725,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Drop a folder here"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="icon" value="folder-add"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="selectFiles" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dropDelegate" destination="XfG-lQ-9wD" id="KEn-bw-qML"/>

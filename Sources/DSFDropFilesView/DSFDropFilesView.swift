@@ -31,7 +31,6 @@ private extension NSNotification.Name {
 /// A view that support dropping files
 @IBDesignable
 @objc public class DSFDropFilesView: NSView {
-
 	let displaySettings = DSFAccessibility.Display.shared
 
 	let outerBoundary = CAShapeLayer()
@@ -152,7 +151,7 @@ private extension NSNotification.Name {
 	/// The image to be displayed.
 	@IBInspectable var icon: NSImage? = DSFDropFilesView.StaticImage {
 		didSet {
-			self.imageView.image = icon
+			self.imageView.image = self.icon
 			self.syncImage()
 		}
 	}
@@ -184,6 +183,9 @@ private extension NSNotification.Name {
 		return self.cornerWidth / 2.0
 	}
 
+	/// Should we animate the border when we can drop?
+	@IBInspectable var animated: Bool = true
+
 	// MARK: - Initialization
 
 	override init(frame frameRect: NSRect) {
@@ -200,7 +202,6 @@ private extension NSNotification.Name {
 // MARK: - Action callbacks
 
 extension DSFDropFilesView {
-
 	@objc func selectFiles(_: Any) {
 		if let userSelectedFiles = self.dropDelegate?.dropFilesViewWantsSelectFiles {
 			userSelectedFiles(self)
@@ -217,12 +218,11 @@ extension DSFDropFilesView {
 // MARK: - UI Layout
 
 extension DSFDropFilesView {
-
-	public override func prepareForInterfaceBuilder() {
+	override public func prepareForInterfaceBuilder() {
 		self.configureControl()
 	}
 
-	public override func layout() {
+	override public func layout() {
 		super.layout()
 		self.outerBoundary.path = CGPath(
 			roundedRect: self.bounds.insetBy(dx: self.borderInset, dy: self.borderInset),
@@ -267,7 +267,8 @@ extension DSFDropFilesView {
 
 		if #available(OSX 10.13, *) {
 			self.registerForDraggedTypes([.fileURL])
-		} else {
+		}
+		else {
 			let furl = NSPasteboard.PasteboardType(kUTTypeFileURL as String)
 			self.registerForDraggedTypes([furl])
 		}
@@ -336,7 +337,7 @@ public extension DSFDropFilesView {
 		}
 
 		// If we are in single select and there are multiple files then don't allow drop
-		if !self.multipleSelect && files.count != 1 {
+		if !self.multipleSelect, files.count != 1 {
 			return []
 		}
 
@@ -369,7 +370,6 @@ public extension DSFDropFilesView {
 	// Perform the drag operation
 
 	override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-
 		self.stopAnimation()
 
 		self.outerBoundary.strokeColor = self.backgroundStrokeColor()
@@ -391,6 +391,7 @@ extension DSFDropFilesView {
 	func backgroundColor() -> CGColor {
 		return NSColor(calibratedWhite: 0, alpha: 0.05).cgColor
 	}
+
 	func backgroundStrokeColor() -> CGColor {
 		var color: CGColor!
 		UsingEffectiveAppearance(of: self) {
@@ -420,8 +421,7 @@ extension DSFDropFilesView {
 
 extension DSFDropFilesView {
 	func startAnimation() {
-
-		if self.displaySettings.reduceMotion {
+		if !self.animated || self.displaySettings.reduceMotion {
 			return
 		}
 
