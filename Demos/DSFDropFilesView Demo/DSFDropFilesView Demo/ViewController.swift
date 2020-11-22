@@ -7,8 +7,6 @@
 
 import Cocoa
 
-import DSFDropFilesView
-
 class ViewController: NSViewController {
 	@IBOutlet var left: DSFDropFilesView!
 	@IBOutlet weak var middle: DSFDropFilesView!

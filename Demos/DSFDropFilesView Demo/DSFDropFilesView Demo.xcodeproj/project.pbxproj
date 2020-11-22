@@ -3,18 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23875E43256B2B5900A0ACE0 /* DSFDropFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23875E42256B2B5900A0ACE0 /* DSFDropFilesView.swift */; };
+		23875E49256B2B6A00A0ACE0 /* DSFDropFilesView+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23875E45256B2B6A00A0ACE0 /* DSFDropFilesView+utils.swift */; };
+		23875E4A256B2B6A00A0ACE0 /* DSFDropFilesView+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23875E46256B2B6A00A0ACE0 /* DSFDropFilesView+image.swift */; };
+		23875E4B256B2B6A00A0ACE0 /* DSFDropFilesView+protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23875E47256B2B6A00A0ACE0 /* DSFDropFilesView+protocol.swift */; };
+		23875E4C256B2B6A00A0ACE0 /* DSFAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23875E48256B2B6A00A0ACE0 /* DSFAccessibility.swift */; };
 		23E5973C2547D4460080BE0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E5973B2547D4460080BE0E /* AppDelegate.swift */; };
 		23E5973E2547D4460080BE0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E5973D2547D4460080BE0E /* ViewController.swift */; };
 		23E597402547D4470080BE0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E5973F2547D4470080BE0E /* Assets.xcassets */; };
 		23E597432547D4470080BE0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E597412547D4470080BE0E /* Main.storyboard */; };
-		23E597542547D56D0080BE0E /* DSFDropFilesView in Frameworks */ = {isa = PBXBuildFile; productRef = 23E597532547D56D0080BE0E /* DSFDropFilesView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23875E42256B2B5900A0ACE0 /* DSFDropFilesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DSFDropFilesView.swift; path = ../../../Sources/DSFDropFilesView/DSFDropFilesView.swift; sourceTree = "<group>"; };
+		23875E45256B2B6A00A0ACE0 /* DSFDropFilesView+utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DSFDropFilesView+utils.swift"; path = "../../../Sources/DSFDropFilesView/private/DSFDropFilesView+utils.swift"; sourceTree = "<group>"; };
+		23875E46256B2B6A00A0ACE0 /* DSFDropFilesView+image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DSFDropFilesView+image.swift"; path = "../../../Sources/DSFDropFilesView/private/DSFDropFilesView+image.swift"; sourceTree = "<group>"; };
+		23875E47256B2B6A00A0ACE0 /* DSFDropFilesView+protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DSFDropFilesView+protocol.swift"; path = "../../../Sources/DSFDropFilesView/private/DSFDropFilesView+protocol.swift"; sourceTree = "<group>"; };
+		23875E48256B2B6A00A0ACE0 /* DSFAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DSFAccessibility.swift; path = ../../../Sources/DSFDropFilesView/private/DSFAccessibility.swift; sourceTree = "<group>"; };
 		23E597382547D4460080BE0E /* DSFDropFilesView Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFDropFilesView Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E5973B2547D4460080BE0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E5973D2547D4460080BE0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,7 +31,6 @@
 		23E597422547D4470080BE0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23E597442547D4470080BE0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23E597452547D4470080BE0E /* DSFDropFilesView_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFDropFilesView_Demo.entitlements; sourceTree = "<group>"; };
-		23E5974D2547D4580080BE0E /* DSFDropFilesView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DSFDropFilesView; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,17 +38,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23E597542547D56D0080BE0E /* DSFDropFilesView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23875E41256B2B3200A0ACE0 /* DSFDropFilesView */ = {
+			isa = PBXGroup;
+			children = (
+				23875E42256B2B5900A0ACE0 /* DSFDropFilesView.swift */,
+				23875E48256B2B6A00A0ACE0 /* DSFAccessibility.swift */,
+				23875E46256B2B6A00A0ACE0 /* DSFDropFilesView+image.swift */,
+				23875E47256B2B6A00A0ACE0 /* DSFDropFilesView+protocol.swift */,
+				23875E45256B2B6A00A0ACE0 /* DSFDropFilesView+utils.swift */,
+			);
+			name = DSFDropFilesView;
+			sourceTree = "<group>";
+		};
 		23E5972F2547D4460080BE0E = {
 			isa = PBXGroup;
 			children = (
-				23E5974D2547D4580080BE0E /* DSFDropFilesView */,
 				23E5973A2547D4460080BE0E /* DSFDropFilesView Demo */,
 				23E597392547D4460080BE0E /* Products */,
 				23E597522547D56D0080BE0E /* Frameworks */,
@@ -58,6 +76,7 @@
 		23E5973A2547D4460080BE0E /* DSFDropFilesView Demo */ = {
 			isa = PBXGroup;
 			children = (
+				23875E41256B2B3200A0ACE0 /* DSFDropFilesView */,
 				23E5973B2547D4460080BE0E /* AppDelegate.swift */,
 				23E5973D2547D4460080BE0E /* ViewController.swift */,
 				23E5973F2547D4470080BE0E /* Assets.xcassets */,
@@ -89,11 +108,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				23E597512547D5680080BE0E /* PBXTargetDependency */,
 			);
 			name = "DSFDropFilesView Demo";
 			packageProductDependencies = (
-				23E597532547D56D0080BE0E /* DSFDropFilesView */,
 			);
 			productName = "DSFDropFilesView Demo";
 			productReference = 23E597382547D4460080BE0E /* DSFDropFilesView Demo.app */;
@@ -148,19 +165,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23875E43256B2B5900A0ACE0 /* DSFDropFilesView.swift in Sources */,
+				23875E4C256B2B6A00A0ACE0 /* DSFAccessibility.swift in Sources */,
+				23875E4A256B2B6A00A0ACE0 /* DSFDropFilesView+image.swift in Sources */,
 				23E5973E2547D4460080BE0E /* ViewController.swift in Sources */,
 				23E5973C2547D4460080BE0E /* AppDelegate.swift in Sources */,
+				23875E49256B2B6A00A0ACE0 /* DSFDropFilesView+utils.swift in Sources */,
+				23875E4B256B2B6A00A0ACE0 /* DSFDropFilesView+protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		23E597512547D5680080BE0E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 23E597502547D5680080BE0E /* DSFDropFilesView */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		23E597412547D4470080BE0E /* Main.storyboard */ = {
@@ -355,17 +370,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		23E597502547D5680080BE0E /* DSFDropFilesView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFDropFilesView;
-		};
-		23E597532547D56D0080BE0E /* DSFDropFilesView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFDropFilesView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23E597302547D4460080BE0E /* Project object */;
 }
