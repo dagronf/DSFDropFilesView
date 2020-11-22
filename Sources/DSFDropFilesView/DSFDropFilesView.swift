@@ -34,6 +34,13 @@ private extension NSNotification.Name {
 
 	// MARK: - Public accessors
 
+	/// Enable or disable the control
+	@IBInspectable dynamic public var isEnabled: Bool = true {
+		didSet {
+			self.selectButton.isEnabled = self.isEnabled
+		}
+	}
+
 	/// The drop delegate.
 	@IBOutlet public var dropDelegate: DSFDropFilesViewProtocol? {
 		didSet {
@@ -196,6 +203,7 @@ private extension NSNotification.Name {
 		button.bezelStyle = .rounded
 		button.isBordered = false
 		button.controlSize = .regular
+		button.isEnabled = true
 		return button
 	}()
 }
@@ -330,7 +338,8 @@ public extension DSFDropFilesView {
 	// Called when the user has dropped a file
 
 	override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
-		if let delegate = self.dropDelegate,
+		if self.isEnabled,
+		   let delegate = self.dropDelegate,
 		   let files = self.filesOnPasteboard(for: sender)
 		{
 			return delegate.dropFilesView(self, validateFiles: files) != []
