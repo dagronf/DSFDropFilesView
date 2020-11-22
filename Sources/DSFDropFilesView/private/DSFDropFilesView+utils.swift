@@ -32,4 +32,18 @@ internal func UsingEffectiveAppearance(of view: NSView, perform block: () throws
 	NSAppearance.current = saved
 }
 
+internal class DSFHandButton: NSButton {
+	var wantsHandCursor: Bool = true {
+		didSet {
+			self.needsLayout = true
+		}
+	}
+	public override func resetCursorRects() {
+		// Add the hand cursor when we're over the button
+		if self.wantsHandCursor {
+			self.addCursorRect(bounds, cursor: .pointingHand)
+		}
+	}
+}
+
 #endif

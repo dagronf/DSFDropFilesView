@@ -55,18 +55,47 @@ Called with the files when the user actually drops the files.
 
 These properties can all be configured via Interface Builder or programatically.
 
-* `multipleSelect` : Allow multiple files/folders to dropped
-* `selectFiles` : Display a 'select files...' button (better for accessibility)
+#### Allowed drop counts
+
+* `allowMultipleSelect` : Allow multiple files/folders to dropped
+
+#### Select files button (optional)
+
+* `selectFilesButtonLabel` : Embed a clickable button for accessibility with the specified label. If empty, doesn't display the button (default)
+* `selectFilesButtonIsLink` : If the select files button is display, show the button as a hyperlink (blue underlined text) instead of a button.
+
+#### Icon
+
 * `showIcon` : Should we display an icon
 * `icon` : The icon to display. A default icon is supplied
-* `showLabel` : Should we display a label?
-* `label` : The text of the label
+
+#### Label
+
+* `label` : The text of the label. If empty, the label is hidden.
 * `lineWidth` : The line width for the dotted border
 * `cornerWidth` : The radius for the corners
 
-## History
+## History and changes
 
-* `1.0.0`: Initial release
+### `1.1.0`
+
+#### Select files button
+
+* Added `selectFilesButtonLabel` to allow the user to specify the 'select files' text. Removes the need for the package to provide its own localizations -- the user can provide them if needed.
+* Removed the `selectFiles` property, as it can now be inferred from the `selectFilesButtonLabel` content.
+* Added `selectFilesButtonIsLink` to display the 'select files' button in a hyperlink style (blue underlined) or a standard button.
+
+#### Multiple select
+
+* Renamed `multipleSelect` to `allowsMultipleSelect` for code clarity.
+
+#### General
+
+* Removed localizations file (no longer needed)
+
+### `1.0.0`
+
+* Initial release
 
 ## License
 

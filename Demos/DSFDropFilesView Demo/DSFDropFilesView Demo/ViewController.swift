@@ -11,6 +11,7 @@ import DSFDropFilesView
 
 class ViewController: NSViewController {
 	@IBOutlet var left: DSFDropFilesView!
+	@IBOutlet weak var middle: DSFDropFilesView!
 	@IBOutlet var right: DSFDropFilesView!
 
 	override func viewDidLoad() {
@@ -44,7 +45,7 @@ extension ViewController: DSFDropFilesViewProtocol {
 		myOpen.canChooseDirectories = true
 
 		if let w = self.view.window {
-			myOpen.beginSheetModal(for: w) { [weak self] response in
+			myOpen.beginSheetModal(for: w) { response in
 				if response == NSApplication.ModalResponse.OK {
 					Swift.print(myOpen.urls)
 				}
@@ -54,13 +55,28 @@ extension ViewController: DSFDropFilesViewProtocol {
 
 	func dropFilesView(_ sender: DSFDropFilesView, validateFiles: [URL]) -> NSDragOperation {
 		if sender === self.left {
+			let foundInvalidImage = validateFiles.first { (url) -> Bool in
+				guard let im = NSImage(byReferencingFile: url.path) else {
+					// Found an invalid image
+					return true
+				}
+				return !im.isValid
+			}
+
+			if let _ = foundInvalidImage {
+				return []
+			}
+
 			return .copy
 		}
 		else if sender === self.right {
 			let c = validateFiles.filter { !self.isFolder($0) }.count
 			return c > 0 ? [] : .copy
 		}
-		return .delete
+		else if sender === self.middle {
+			return .copy
+		}
+		return []
 	}
 
 	func dropFilesView(_: DSFDropFilesView, didDropFiles files: [URL]) -> Bool {

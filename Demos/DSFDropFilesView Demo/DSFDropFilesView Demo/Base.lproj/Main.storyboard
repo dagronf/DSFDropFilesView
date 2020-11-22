@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -707,36 +707,75 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DSFDropFilesView_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="663" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1307" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHf-ix-6C8">
-                                <rect key="frame" x="20" y="20" width="623" height="230"/>
+                                <rect key="frame" x="20" y="20" width="1267" height="230"/>
                                 <subviews>
                                     <customView horizontalHuggingPriority="100" verticalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="8uA-x0-0p7" customClass="DSFDropFilesView" customModule="DSFDropFilesView">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="230"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectFilesButtonLabel" value="Select Photos..."/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dropDelegate" destination="XfG-lQ-9wD" id="Djk-Lb-faI"/>
                                         </connections>
                                     </customView>
+                                    <customView horizontalHuggingPriority="100" verticalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="M4V-G5-mdz" userLabel="Middle" customClass="DSFDropFilesView" customModule="DSFDropFilesView">
+                                        <rect key="frame" x="322" y="0.0" width="302" height="230"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Drop Files Here"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSelectFilesButton" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="selectFilesButtonIsLink" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectFilesButtonLabel" value="Select Files…"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidth">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dropDelegate" destination="XfG-lQ-9wD" id="Ajd-MJ-MrV"/>
+                                        </connections>
+                                    </customView>
                                     <customView horizontalHuggingPriority="100" verticalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="QAa-RI-JgV" customClass="DSFDropFilesView" customModule="DSFDropFilesView">
-                                        <rect key="frame" x="322" y="0.0" width="301" height="230"/>
+                                        <rect key="frame" x="644" y="0.0" width="301" height="230"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Drop a folder here"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="icon" value="folder-add"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="selectFiles" value="NO"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSelectFilesButton" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dropDelegate" destination="XfG-lQ-9wD" id="KEn-bw-qML"/>
+                                        </connections>
+                                    </customView>
+                                    <customView horizontalHuggingPriority="100" verticalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="w5M-0X-9nv" userLabel="Right 2" customClass="DSFDropFilesView" customModule="DSFDropFilesView">
+                                        <rect key="frame" x="965" y="0.0" width="302" height="230"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSelectFilesButton" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="selectFilesButtonIsLink" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectFilesButtonLabel" value="Select…"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showIcon" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dropDelegate" destination="XfG-lQ-9wD" id="emo-fN-ZNv"/>
                                         </connections>
                                     </customView>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
@@ -751,6 +790,7 @@
                     </view>
                     <connections>
                         <outlet property="left" destination="8uA-x0-0p7" id="UOx-99-df0"/>
+                        <outlet property="middle" destination="M4V-G5-mdz" id="HUb-89-jpO"/>
                         <outlet property="right" destination="QAa-RI-JgV" id="uwI-gm-8rJ"/>
                     </connections>
                 </viewController>

@@ -31,92 +31,6 @@ private extension NSNotification.Name {
 /// A view that support dropping files
 @IBDesignable
 @objc public class DSFDropFilesView: NSView {
-	let displaySettings = DSFAccessibility.Display.shared
-
-	let outerBoundary = CAShapeLayer()
-
-	// MARK: - Badge stack contents
-
-	lazy var containerStack: NSStackView = {
-		let s = NSStackView()
-		s.translatesAutoresizingMaskIntoConstraints = false
-		s.wantsLayer = true
-
-		s.orientation = .vertical
-		s.spacing = 3
-		s.alignment = .centerX
-		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
-		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
-
-		s.setHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
-		s.setHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
-
-		s.setContentCompressionResistancePriority(.required, for: .horizontal)
-		s.setContentCompressionResistancePriority(.required, for: .vertical)
-
-		s.addArrangedSubview(self.imageView)
-		s.addArrangedSubview(self.imageLabel)
-		s.addArrangedSubview(self.separator)
-		s.addArrangedSubview(self.selectButton)
-
-		return s
-	}()
-
-	lazy var separator: NSView = {
-		let sep = NSView(frame: .zero)
-		sep.translatesAutoresizingMaskIntoConstraints = false
-		sep.addConstraint(NSLayoutConstraint(item: sep, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 4))
-		sep.addConstraint(NSLayoutConstraint(item: sep, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 8))
-		return sep
-	}()
-
-	lazy var imageView: NSImageView = {
-		let i = NSImageView()
-		i.translatesAutoresizingMaskIntoConstraints = false
-		i.wantsLayer = true
-		i.imageScaling = .scaleProportionallyDown
-		i.image = self.icon
-
-		i.isEditable = false
-		i.unregisterDraggedTypes()
-
-		i.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-		i.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-
-		return i
-	}()
-
-	lazy var imageLabel: NSTextField = {
-		let t = NSTextField()
-		t.translatesAutoresizingMaskIntoConstraints = false
-		t.wantsLayer = true
-		t.drawsBackground = false
-		t.isBezeled = false
-		t.font = NSFont.systemFont(ofSize: 16, weight: .bold)
-		t.textColor = NSColor.tertiaryLabelColor
-		t.stringValue = self.label
-		t.alignment = .center
-		t.isEditable = false
-		t.isSelectable = false
-		t.lineBreakMode = .byWordWrapping
-
-		t.setContentHuggingPriority(.defaultLow, for: .horizontal)
-		t.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-
-		return t
-	}()
-
-	lazy var selectButton: NSButton = {
-		let button = NSButton()
-		button.wantsLayer = true
-		button.translatesAutoresizingMaskIntoConstraints = false
-		button.target = self
-		button.action = #selector(self.selectFiles(_:))
-		button.bezelStyle = .rounded
-		button.isBordered = false
-		button.controlSize = .regular
-		return button
-	}()
 
 	// MARK: - Public accessors
 
@@ -128,20 +42,27 @@ private extension NSNotification.Name {
 	}
 
 	/// Do we support dropping multiple files at once?
-	@IBInspectable var multipleSelect: Bool = true {
+	@IBInspectable var allowsMultipleSelect: Bool = true {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
-	/// Should we display the select files button?
-	@IBInspectable var selectFiles: Bool = true {
+	/// The label for the 'select files...' button.  If empty, the button is not displayed.
+	@IBInspectable var selectFilesButtonLabel: String = "" {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
-	/// Should we display the icon?
+	/// If the select files button is shown, do we display it as a hyperlink or a regular button?
+	@IBInspectable var selectFilesButtonIsLink: Bool = true {
+		didSet {
+			self.syncTitle()
+		}
+	}
+
+	/// Should the drop target display an icon.
 	@IBInspectable var showIcon: Bool = true {
 		didSet {
 			self.syncTitle()
@@ -156,15 +77,8 @@ private extension NSNotification.Name {
 		}
 	}
 
-	/// Should we display the select files button?
-	@IBInspectable var showLabel: Bool = true {
-		didSet {
-			self.syncTitle()
-		}
-	}
-
-	/// Should we display the select files button?
-	@IBInspectable var label: String = "Drop files here" {
+	/// Display a informational label. If empty, the label is hidden.
+	@IBInspectable var label: String = "" {
 		didSet {
 			self.syncTitle()
 		}
@@ -197,6 +111,93 @@ private extension NSNotification.Name {
 		super.init(coder: coder)
 		self.configureControl()
 	}
+
+	// MARK: - Private definitions
+
+	private let displaySettings = DSFAccessibility.Display.shared
+	private let outerBoundary = CAShapeLayer()
+
+	private lazy var containerStack: NSStackView = {
+		let s = NSStackView()
+		s.translatesAutoresizingMaskIntoConstraints = false
+		s.wantsLayer = true
+		s.edgeInsets = NSEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+
+		s.orientation = .vertical
+		s.spacing = 4
+		s.alignment = .centerX
+		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
+		s.setContentHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
+
+		s.setHuggingPriority(NSLayoutConstraint.Priority(50), for: .horizontal)
+		s.setHuggingPriority(NSLayoutConstraint.Priority(50), for: .vertical)
+
+		s.setContentCompressionResistancePriority(.required, for: .horizontal)
+		s.setContentCompressionResistancePriority(.required, for: .vertical)
+
+		s.addArrangedSubview(self.imageView)
+		s.addArrangedSubview(self.imageLabel)
+		s.addArrangedSubview(self.buttonSpacerView)
+		s.addArrangedSubview(self.selectButton)
+
+		return s
+	}()
+
+	private lazy var buttonSpacerView: NSView = {
+		let sep = NSView(frame: .zero)
+		sep.translatesAutoresizingMaskIntoConstraints = false
+		sep.addConstraint(NSLayoutConstraint(item: sep, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 4))
+		sep.addConstraint(NSLayoutConstraint(item: sep, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 8))
+		return sep
+	}()
+
+	private lazy var imageView: NSImageView = {
+		let i = NSImageView()
+		i.translatesAutoresizingMaskIntoConstraints = false
+		i.wantsLayer = true
+		i.imageScaling = .scaleProportionallyDown
+		i.image = self.icon
+
+		i.isEditable = false
+		i.unregisterDraggedTypes()
+
+		i.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+		i.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+
+		return i
+	}()
+
+	private lazy var imageLabel: NSTextField = {
+		let t = NSTextField()
+		t.translatesAutoresizingMaskIntoConstraints = false
+		t.wantsLayer = true
+		t.drawsBackground = false
+		t.isBezeled = false
+		t.font = NSFont.systemFont(ofSize: 16, weight: .bold)
+		t.textColor = NSColor.tertiaryLabelColor
+		t.stringValue = self.label
+		t.alignment = .center
+		t.isEditable = false
+		t.isSelectable = false
+		t.lineBreakMode = .byWordWrapping
+
+		t.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		t.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
+		return t
+	}()
+
+	private lazy var selectButton: DSFHandButton = {
+		let button = DSFHandButton()
+		button.wantsLayer = true
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.target = self
+		button.action = #selector(self.selectFiles(_:))
+		button.bezelStyle = .rounded
+		button.isBordered = false
+		button.controlSize = .regular
+		return button
+	}()
 }
 
 // MARK: - Action callbacks
@@ -237,29 +238,40 @@ extension DSFDropFilesView {
 	}
 
 	private func syncTitle() {
-		let title = self.multipleSelect
-			? DSFDropFilesView.Localizations.SelectFiles
-			: DSFDropFilesView.Localizations.SelectFile
 
-		let att = NSAttributedString(
-			string: title,
-			attributes: [
-				NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-				NSAttributedString.Key.foregroundColor: NSColor.linkColor,
-			]
-		)
-
-		self.selectButton.attributedTitle = att
-		self.selectButton.isHidden = !self.selectFiles
+		let buttonTitle = self.selectFilesButtonLabel
+		if self.selectFilesButtonIsLink {
+			let att = NSAttributedString(
+				string: buttonTitle,
+				attributes: [
+					NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+					NSAttributedString.Key.foregroundColor: NSColor.linkColor,
+				]
+			)
+			self.selectButton.isBordered = false
+			self.selectButton.attributedTitle = att
+			self.selectButton.wantsHandCursor = true
+		}
+		else {
+			self.selectButton.isBordered = true
+			self.selectButton.title = buttonTitle
+			self.selectButton.wantsHandCursor = false
+		}
 
 		self.imageView.image = self.icon
 		self.syncImage()
 		self.imageView.isHidden = !self.showIcon
 
 		self.imageLabel.stringValue = self.label
-		self.imageLabel.isHidden = !self.showLabel
 
-		self.separator.isHidden = !self.selectFiles
+		// Hide the label if the label text is empty
+		self.imageLabel.isHidden = self.label.isEmpty
+
+		// Hide the select files button if no text has been set
+		let hideSelectFilesButton = self.selectFilesButtonLabel.isEmpty
+		self.buttonSpacerView.isHidden = hideSelectFilesButton
+		self.selectButton.isHidden = hideSelectFilesButton
+
 	}
 
 	private func configureControl() {
@@ -337,7 +349,7 @@ public extension DSFDropFilesView {
 		}
 
 		// If we are in single select and there are multiple files then don't allow drop
-		if !self.multipleSelect, files.count != 1 {
+		if !self.allowsMultipleSelect, files.count != 1 {
 			return []
 		}
 
