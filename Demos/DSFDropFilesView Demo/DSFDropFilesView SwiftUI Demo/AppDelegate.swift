@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  DSFDropViewView SwiftUI Demo
+//  DSFDropFilesView SwiftUI Demo
 //
 //  Created by Darren Ford on 23/11/20.
 //

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  DSFDropViewView SwiftUI Demo
+//  DSFDropFilesView SwiftUI Demo
 //
 //  Created by Darren Ford on 23/11/20.
 //
@@ -25,7 +25,7 @@ struct ContentView: View {
 				allowsMultipleDrop: true,
 				iconLabel: self.label,
 				selectFilesLabel: "Select Files…",
-				selectFilesButtonIsLink: false,
+				selectFilesButtonIsLink: true,
 				validateFiles: { urls in
 					return .copy
 				},
