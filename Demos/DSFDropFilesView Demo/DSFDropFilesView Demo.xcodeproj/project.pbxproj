@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				230A4B8E256CA760009B4689 /* PBXTargetDependency */,
 				23D29C49256C890800E5CBC0 /* PBXTargetDependency */,
 				23D29C4B256C890800E5CBC0 /* PBXTargetDependency */,
 			);
@@ -22,6 +23,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		230A4B79256CA750009B4689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 230A4B78256CA750009B4689 /* AppDelegate.m */; };
+		230A4B7C256CA750009B4689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 230A4B7B256CA750009B4689 /* ViewController.m */; };
+		230A4B7E256CA751009B4689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230A4B7D256CA751009B4689 /* Assets.xcassets */; };
+		230A4B81256CA751009B4689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A4B7F256CA751009B4689 /* Main.storyboard */; };
+		230A4B84256CA751009B4689 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 230A4B83256CA751009B4689 /* main.m */; };
+		230A4B96256CA771009B4689 /* DSFDropFilesView in Frameworks */ = {isa = PBXBuildFile; productRef = 230A4B95256CA771009B4689 /* DSFDropFilesView */; };
 		2359819D256B2FCA000D2479 /* DSFDropFilesView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359819C256B2FCA000D2479 /* DSFDropFilesView+SwiftUI.swift */; };
 		235981A8256B333F000D2479 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235981A7256B333F000D2479 /* AppDelegate.swift */; };
 		235981AA256B333F000D2479 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235981A9256B333F000D2479 /* ContentView.swift */; };
@@ -41,6 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		230A4B8D256CA760009B4689 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23E597302547D4460080BE0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 230A4B74256CA750009B4689;
+			remoteInfo = "DSFDropFilesView ObjC Demo";
+		};
 		23D29C48256C890800E5CBC0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 23E597302547D4460080BE0E /* Project object */;
@@ -58,6 +72,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		230A4B75256CA750009B4689 /* DSFDropFilesView ObjC Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFDropFilesView ObjC Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		230A4B77256CA750009B4689 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		230A4B78256CA750009B4689 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		230A4B7A256CA750009B4689 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		230A4B7B256CA750009B4689 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		230A4B7D256CA751009B4689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		230A4B80256CA751009B4689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		230A4B82256CA751009B4689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		230A4B83256CA751009B4689 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		230A4B85256CA751009B4689 /* DSFDropFilesView_ObjC_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFDropFilesView_ObjC_Demo.entitlements; sourceTree = "<group>"; };
 		2359819C256B2FCA000D2479 /* DSFDropFilesView+SwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DSFDropFilesView+SwiftUI.swift"; path = "../../../Sources/DSFDropFilesView/DSFDropFilesView+SwiftUI.swift"; sourceTree = "<group>"; };
 		235981A5256B333F000D2479 /* DSFDropFilesView SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFDropFilesView SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235981A7256B333F000D2479 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +107,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		230A4B72256CA750009B4689 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230A4B96256CA771009B4689 /* DSFDropFilesView in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		235981A2256B333F000D2479 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,6 +133,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		230A4B76256CA750009B4689 /* DSFDropFilesView ObjC Demo */ = {
+			isa = PBXGroup;
+			children = (
+				230A4B77256CA750009B4689 /* AppDelegate.h */,
+				230A4B78256CA750009B4689 /* AppDelegate.m */,
+				230A4B7A256CA750009B4689 /* ViewController.h */,
+				230A4B7B256CA750009B4689 /* ViewController.m */,
+				230A4B7D256CA751009B4689 /* Assets.xcassets */,
+				230A4B7F256CA751009B4689 /* Main.storyboard */,
+				230A4B82256CA751009B4689 /* Info.plist */,
+				230A4B83256CA751009B4689 /* main.m */,
+				230A4B85256CA751009B4689 /* DSFDropFilesView_ObjC_Demo.entitlements */,
+			);
+			path = "DSFDropFilesView ObjC Demo";
+			sourceTree = "<group>";
+		};
 		235981A6256B333F000D2479 /* DSFDropFilesView SwiftUI Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +190,7 @@
 				23D29C4F256C8DDC00E5CBC0 /* DSFDropFilesView */,
 				23E5973A2547D4460080BE0E /* DSFDropFilesView Demo */,
 				235981A6256B333F000D2479 /* DSFDropFilesView SwiftUI Demo */,
+				230A4B76256CA750009B4689 /* DSFDropFilesView ObjC Demo */,
 				23E597392547D4460080BE0E /* Products */,
 				23E597522547D56D0080BE0E /* Frameworks */,
 			);
@@ -152,6 +201,7 @@
 			children = (
 				23E597382547D4460080BE0E /* DSFDropFilesView Demo.app */,
 				235981A5256B333F000D2479 /* DSFDropFilesView SwiftUI Demo.app */,
+				230A4B75256CA750009B4689 /* DSFDropFilesView ObjC Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +230,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		230A4B74256CA750009B4689 /* DSFDropFilesView ObjC Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 230A4B88256CA751009B4689 /* Build configuration list for PBXNativeTarget "DSFDropFilesView ObjC Demo" */;
+			buildPhases = (
+				230A4B71256CA750009B4689 /* Sources */,
+				230A4B72256CA750009B4689 /* Frameworks */,
+				230A4B73256CA750009B4689 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				230A4B94256CA76B009B4689 /* PBXTargetDependency */,
+			);
+			name = "DSFDropFilesView ObjC Demo";
+			packageProductDependencies = (
+				230A4B95256CA771009B4689 /* DSFDropFilesView */,
+			);
+			productName = "DSFDropFilesView ObjC Demo";
+			productReference = 230A4B75256CA750009B4689 /* DSFDropFilesView ObjC Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		235981A4256B333F000D2479 /* DSFDropFilesView SwiftUI Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 235981B5256B3340000D2479 /* Build configuration list for PBXNativeTarget "DSFDropFilesView SwiftUI Demo" */;
@@ -229,6 +300,9 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					230A4B74256CA750009B4689 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 					235981A4256B333F000D2479 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -256,11 +330,21 @@
 				23E597372547D4460080BE0E /* DSFDropFilesView Demo */,
 				235981A4256B333F000D2479 /* DSFDropFilesView SwiftUI Demo */,
 				23D29C41256C890300E5CBC0 /* All */,
+				230A4B74256CA750009B4689 /* DSFDropFilesView ObjC Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		230A4B73256CA750009B4689 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230A4B7E256CA751009B4689 /* Assets.xcassets in Resources */,
+				230A4B81256CA751009B4689 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		235981A3256B333F000D2479 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +367,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		230A4B71256CA750009B4689 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230A4B7C256CA750009B4689 /* ViewController.m in Sources */,
+				230A4B84256CA751009B4689 /* main.m in Sources */,
+				230A4B79256CA750009B4689 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		235981A1256B333F000D2479 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,6 +404,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		230A4B8E256CA760009B4689 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 230A4B74256CA750009B4689 /* DSFDropFilesView ObjC Demo */;
+			targetProxy = 230A4B8D256CA760009B4689 /* PBXContainerItemProxy */;
+		};
+		230A4B94256CA76B009B4689 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 230A4B93256CA76B009B4689 /* DSFDropFilesView */;
+		};
 		23D29C49256C890800E5CBC0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 23E597372547D4460080BE0E /* DSFDropFilesView Demo */;
@@ -327,6 +430,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		230A4B7F256CA751009B4689 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				230A4B80256CA751009B4689 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		235981B0256B3340000D2479 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -346,6 +457,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		230A4B86256CA751009B4689 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_ENTITLEMENTS = "DSFDropFilesView ObjC Demo/DSFDropFilesView_ObjC_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "DSFDropFilesView ObjC Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFDropFilesView-ObjC-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		230A4B87256CA751009B4689 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_ENTITLEMENTS = "DSFDropFilesView ObjC Demo/DSFDropFilesView_ObjC_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "DSFDropFilesView ObjC Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFDropFilesView-ObjC-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		235981B6256B3340000D2479 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -574,6 +731,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		230A4B88256CA751009B4689 /* Build configuration list for PBXNativeTarget "DSFDropFilesView ObjC Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				230A4B86256CA751009B4689 /* Debug */,
+				230A4B87256CA751009B4689 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		235981B5256B3340000D2479 /* Build configuration list for PBXNativeTarget "DSFDropFilesView SwiftUI Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -613,6 +779,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		230A4B93256CA76B009B4689 /* DSFDropFilesView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFDropFilesView;
+		};
+		230A4B95256CA771009B4689 /* DSFDropFilesView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFDropFilesView;
+		};
 		23D29C56256C8DF300E5CBC0 /* DSFDropFilesView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DSFDropFilesView;

@@ -34,6 +34,12 @@ let dropView = DSFDropFilesView(frame: .zero)
 
 See below.
 
+### Objective-C
+
+Add `https://github.com/dagronf/DSFDropFilesView` to your project.
+
+Note that if you need to use `DSFDropFilesView` in Objective-C projects supporting macOS earlier than 10.14, you will also need to make sure to set `Always Embed Swift Standard Libraries` to `Yes` in the project settings. Before macOS 10.14 the Swift standard libraries are not distributed as part of the macOS installation and you'll need to provide your own in your application.
+
 ## Delegation
 
 To receive callbacks from the control, set the `dropDelegate` to your view controller.
