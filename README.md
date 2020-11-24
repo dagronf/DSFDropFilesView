@@ -2,7 +2,7 @@
 
 ![](https://github.com/dagronf/dagronf.github.io/blob/master/art/projects/DSFDropFilesView/screenshot.png?raw=true)
 
-A simple view class for dropping files onto.
+A simple view class for dropping files onto. Supporting Swift, SwiftUI and Objective-C.
 
 ![](https://img.shields.io/github/v/tag/dagronf/DSFDropFilesView) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
@@ -29,6 +29,10 @@ Add a new `NSView` instance using Interface Builder, then change the class type 
 ```swift
 let dropView = DSFDropFilesView(frame: .zero)
 ```
+
+### SwiftUI
+
+See below.
 
 ## Delegation
 
@@ -57,7 +61,7 @@ These properties can all be configured via Interface Builder or programatically.
 
 #### Allowed drop counts
 
-* `allowMultipleSelect` : Allow multiple files/folders to dropped
+* `allowsMultipleDrop` : Allow multiple files/folders to dropped
 
 #### Select files button (optional)
 
@@ -75,9 +79,40 @@ These properties can all be configured via Interface Builder or programatically.
 * `lineWidth` : The line width for the dotted border
 * `cornerWidth` : The radius for the corners
 
+## SwiftUI
+
+### SwiftUI
+
+There is a basic SwiftUI View that embeds the `DSFDropFilesView` control.
+
+```swift
+DSFDropFilesView.SwiftUI(
+   isEnabled: true,
+   allowsMultipleDrop: true,
+   iconLabel: "Drop files here",
+   selectFilesLabel: "Select Files…",
+   selectFilesButtonIsLink: true,
+   validateFiles: { urls in
+      // Check the urls, and return the appropriate drop mode
+      return .copy
+   },
+   dropFiles: { urls in
+      Swift.print("\(urls)")
+      return true
+   },
+   selectFiles: {
+      Swift.print("User clicked select files")
+   }
+)
+```
+
 ## History and changes
 
 ### `1.1.0`
+
+#### SwiftUI
+
+Added a SwiftUI Wrapper
 
 #### Select files button
 
@@ -85,12 +120,11 @@ These properties can all be configured via Interface Builder or programatically.
 * Removed the `selectFiles` property, as it can now be inferred from the `selectFilesButtonLabel` content.
 * Added `selectFilesButtonIsLink` to display the 'select files' button in a hyperlink style (blue underlined) or a standard button.
 
-#### Multiple select
-
-* Renamed `multipleSelect` to `allowsMultipleSelect` for code clarity.
-
 #### General
 
+* Renamed `multipleSelect` to `allowsMultipleDrop`
+* Renamed `cornerWidth` to `cornerRadius`
+* Renamed `animated` to `isAnimated`
 * Removed localizations file (no longer needed)
 
 ### `1.0.0`

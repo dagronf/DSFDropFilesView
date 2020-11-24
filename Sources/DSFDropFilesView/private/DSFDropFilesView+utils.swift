@@ -40,7 +40,7 @@ internal class DSFHandButton: NSButton {
 	}
 	public override func resetCursorRects() {
 		// Add the hand cursor when we're over the button
-		if self.wantsHandCursor {
+		if self.wantsHandCursor && self.isEnabled {
 			self.addCursorRect(bounds, cursor: .pointingHand)
 		}
 	}

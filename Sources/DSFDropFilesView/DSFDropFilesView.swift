@@ -31,13 +31,15 @@ private extension NSNotification.Name {
 /// A view that support dropping files
 @IBDesignable
 @objc public class DSFDropFilesView: NSView {
-
 	// MARK: - Public accessors
 
 	/// Enable or disable the control
-	@IBInspectable dynamic public var isEnabled: Bool = true {
+	@IBInspectable public dynamic var isEnabled: Bool = true {
 		didSet {
 			self.selectButton.isEnabled = self.isEnabled
+
+			// Force the cursor to update to reflect the new state
+			self.window?.invalidateCursorRects(for: self.selectButton)
 		}
 	}
 
@@ -49,7 +51,7 @@ private extension NSNotification.Name {
 	}
 
 	/// Do we support dropping multiple files at once?
-	@IBInspectable var allowsMultipleSelect: Bool = true {
+	@IBInspectable var allowsMultipleDrop: Bool = true {
 		didSet {
 			self.syncTitle()
 		}
@@ -91,6 +93,14 @@ private extension NSNotification.Name {
 		}
 	}
 
+	/// Display a border around the drop target
+	@IBInspectable var isBordered: Bool = true {
+		didSet {
+			self.outerBoundary.isHidden = !self.isBordered
+			self.syncTitle()
+		}
+	}
+
 	/// Width of the border line around the control
 	@IBInspectable var lineWidth: CGFloat = 2 {
 		didSet {
@@ -99,13 +109,13 @@ private extension NSNotification.Name {
 	}
 
 	/// The corner radius for the border
-	@IBInspectable var cornerWidth: CGFloat = 4
+	@IBInspectable var cornerRadius: CGFloat = 4
 	var borderInset: CGFloat {
-		return self.cornerWidth / 2.0
+		return self.cornerRadius / 2.0
 	}
 
 	/// Should we animate the border when we can drop?
-	@IBInspectable var animated: Bool = true
+	@IBInspectable var isAnimated: Bool = true
 
 	// MARK: - Initialization
 
@@ -117,6 +127,10 @@ private extension NSNotification.Name {
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		self.configureControl()
+	}
+
+	func setLabelFont(_ font: NSFont) {
+		self.imageLabel.font = font
 	}
 
 	// MARK: - Private definitions
@@ -235,8 +249,8 @@ extension DSFDropFilesView {
 		super.layout()
 		self.outerBoundary.path = CGPath(
 			roundedRect: self.bounds.insetBy(dx: self.borderInset, dy: self.borderInset),
-			cornerWidth: self.cornerWidth,
-			cornerHeight: self.cornerWidth, transform: nil
+			cornerWidth: self.cornerRadius,
+			cornerHeight: self.cornerRadius, transform: nil
 		)
 	}
 
@@ -246,7 +260,6 @@ extension DSFDropFilesView {
 	}
 
 	private func syncTitle() {
-
 		let buttonTitle = self.selectFilesButtonLabel
 		if self.selectFilesButtonIsLink {
 			let att = NSAttributedString(
@@ -279,7 +292,6 @@ extension DSFDropFilesView {
 		let hideSelectFilesButton = self.selectFilesButtonLabel.isEmpty
 		self.buttonSpacerView.isHidden = hideSelectFilesButton
 		self.selectButton.isHidden = hideSelectFilesButton
-
 	}
 
 	private func configureControl() {
@@ -358,7 +370,7 @@ public extension DSFDropFilesView {
 		}
 
 		// If we are in single select and there are multiple files then don't allow drop
-		if !self.allowsMultipleSelect, files.count != 1 {
+		if !self.allowsMultipleDrop, files.count != 1 {
 			return []
 		}
 
@@ -442,7 +454,7 @@ extension DSFDropFilesView {
 
 extension DSFDropFilesView {
 	func startAnimation() {
-		if !self.animated || self.displaySettings.reduceMotion {
+		if !self.isAnimated || self.displaySettings.reduceMotion {
 			return
 		}
 
