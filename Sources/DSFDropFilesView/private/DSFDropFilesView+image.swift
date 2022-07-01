@@ -1,7 +1,6 @@
 //
 //  DSFDropFilesView+image.swift
 //
-//  Created by Darren Ford on 27/10/20.
 //  Copyright © 2020 Darren Ford. All rights reserved.
 //
 //  MIT license

@@ -4,28 +4,33 @@
 import PackageDescription
 
 let package = Package(
-    name: "DSFDropFilesView",
+	name: "DSFDropFilesView",
 	platforms: [
 		.macOS(.v10_11)
 	],
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "DSFDropFilesView",
-            targets: ["DSFDropFilesView"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "DSFDropFilesView",
-            dependencies: []),
-        .testTarget(
-            name: "DSFDropFilesViewTests",
-            dependencies: ["DSFDropFilesView"]),
-    ]
+	products: [
+		.library(
+			name: "DSFDropFilesView",
+			type: .static,
+			targets: ["DSFDropFilesView"]),
+		.library(
+			name: "DSFDropFilesViewDynamic",
+			type: .dynamic,
+			targets: ["DSFDropFilesView"]),
+	],
+	dependencies: [
+		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "2.0.0")
+	],
+	targets: [
+		.target(
+			name: "DSFDropFilesView",
+			dependencies: [
+				// Make sure that we link against the static library
+				.product(name: "DSFAppearanceManager", package: "DSFAppearanceManager")
+			]
+		),
+		.testTarget(
+			name: "DSFDropFilesViewTests",
+			dependencies: ["DSFDropFilesView"]),
+	]
 )

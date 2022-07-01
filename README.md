@@ -114,6 +114,12 @@ DSFDropFilesView.SwiftUI(
 
 ## History and changes
 
+### `2.0.0`
+
+* Updated to use [DSFAppearanceManager](https://github.com/dagronf/DSFAppearanceManager) for handling display changes
+* Removed warnings for newer versions of Xcode.
+* Added separate dynamic/static versions of the library
+
 ### `1.1.0`
 
 #### SwiftUI

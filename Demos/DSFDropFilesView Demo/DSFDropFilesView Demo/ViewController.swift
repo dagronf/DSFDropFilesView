@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import DSFDropFilesView
 
 class ViewController: NSViewController {
 	@IBOutlet var left: DSFDropFilesView!

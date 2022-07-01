@@ -1,7 +1,6 @@
 //
 //  DSFDropFilesView+utils.swift
 //
-//  Created by Darren Ford on 27/10/20.
 //  Copyright © 2020 Darren Ford. All rights reserved.
 //
 //  MIT license
@@ -23,14 +22,6 @@
 #if os(macOS)
 
 import AppKit
-
-@inlinable
-internal func UsingEffectiveAppearance(of view: NSView, perform block: () throws -> Void) rethrows {
-	let saved = NSAppearance.current
-	NSAppearance.current = view.effectiveAppearance
-	try block()
-	NSAppearance.current = saved
-}
 
 internal class DSFHandButton: NSButton {
 	var wantsHandCursor: Bool = true {

@@ -1,7 +1,6 @@
 //
 //  DSFDropFilesView.swift
 //
-//  Created by Darren Ford on 27/10/20.
 //  Copyright © 2020 Darren Ford. All rights reserved.
 //
 //  MIT license
@@ -22,11 +21,8 @@
 
 #if os(macOS)
 
-import Cocoa
-
-private extension NSNotification.Name {
-	static let ThemeChangedNotification = NSNotification.Name("AppleInterfaceThemeChangedNotification")
-}
+import AppKit
+import DSFAppearanceManager
 
 /// A view that support dropping files
 @IBDesignable
@@ -129,13 +125,16 @@ private extension NSNotification.Name {
 		self.configureControl()
 	}
 
+	deinit {
+		DSFAppearanceCache.shared.deregister(self)
+	}
+
 	func setLabelFont(_ font: NSFont) {
 		self.imageLabel.font = font
 	}
 
 	// MARK: - Private definitions
 
-	private let displaySettings = DSFAccessibility.Display.shared
 	private let outerBoundary = CAShapeLayer()
 
 	private lazy var containerStack: NSStackView = {
@@ -230,12 +229,6 @@ extension DSFDropFilesView {
 			userSelectedFiles(self)
 		}
 	}
-
-	@objc func themeChange(_: Notification) {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-			self.outerBoundary.strokeColor = self.backgroundStrokeColor()
-		}
-	}
 }
 
 // MARK: - UI Layout
@@ -323,14 +316,18 @@ extension DSFDropFilesView {
 		self.addConstraint(NSLayoutConstraint(item: stack, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
 		self.addConstraint(NSLayoutConstraint(item: stack, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 
-		DistributedNotificationCenter.default().addObserver(
-			self,
-			selector: #selector(self.themeChange),
-			name: NSNotification.Name.ThemeChangedNotification,
-			object: nil
-		)
+		// Register for appearance updates
+		DSFAppearanceCache.shared.register(self)
 
 		self.syncTitle()
+	}
+}
+
+extension DSFDropFilesView: DSFAppearanceCacheNotifiable {
+	public func appearanceDidChange() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			self.outerBoundary.strokeColor = self.backgroundStrokeColor()
+		}
 	}
 }
 
@@ -351,8 +348,8 @@ public extension DSFDropFilesView {
 
 	override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
 		if self.isEnabled,
-		   let delegate = self.dropDelegate,
-		   let files = self.filesOnPasteboard(for: sender)
+			let delegate = self.dropDelegate,
+			let files = self.filesOnPasteboard(for: sender)
 		{
 			return delegate.dropFilesView(self, validateFiles: files) != []
 		}
@@ -409,7 +406,7 @@ public extension DSFDropFilesView {
 		self.outerBoundary.fillColor = self.backgroundColor()
 
 		if let delegate = self.dropDelegate,
-		   let files = self.filesOnPasteboard(for: sender)
+			let files = self.filesOnPasteboard(for: sender)
 		{
 			return delegate.dropFilesView(self, didDropFiles: files)
 		}
@@ -427,7 +424,7 @@ extension DSFDropFilesView {
 
 	func backgroundStrokeColor() -> CGColor {
 		var color: CGColor!
-		UsingEffectiveAppearance(of: self) {
+		self.performUsingEffectiveAppearance { _ in
 			color = NSColor.tertiaryLabelColor.cgColor
 		}
 		return color
@@ -435,7 +432,7 @@ extension DSFDropFilesView {
 
 	func backgroundActiveColor() -> CGColor {
 		var color: CGColor!
-		UsingEffectiveAppearance(of: self) {
+		self.performUsingEffectiveAppearance { _ in
 			color = NSColor.quaternaryLabelColor.cgColor
 		}
 		return color
@@ -443,7 +440,7 @@ extension DSFDropFilesView {
 
 	func backgroundActiveStrokeColor() -> CGColor {
 		var color: CGColor!
-		UsingEffectiveAppearance(of: self) {
+		self.performUsingEffectiveAppearance { _ in
 			color = NSColor.secondaryLabelColor.cgColor
 		}
 		return color
@@ -454,7 +451,7 @@ extension DSFDropFilesView {
 
 extension DSFDropFilesView {
 	func startAnimation() {
-		if !self.isAnimated || self.displaySettings.reduceMotion {
+		if !self.isAnimated || DSFAppearanceManager.ReduceMotion {
 			return
 		}
 
