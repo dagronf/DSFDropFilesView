@@ -19,7 +19,7 @@ let package = Package(
 			targets: ["DSFDropFilesView"]),
 	],
 	dependencies: [
-		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "2.0.0")
+		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "3.0.0")
 	],
 	targets: [
 		.target(

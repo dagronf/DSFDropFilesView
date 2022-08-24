@@ -424,7 +424,7 @@ extension DSFDropFilesView {
 
 	func backgroundStrokeColor() -> CGColor {
 		var color: CGColor!
-		self.performUsingEffectiveAppearance { _ in
+		self.usingEffectiveAppearance {
 			color = NSColor.tertiaryLabelColor.cgColor
 		}
 		return color
@@ -432,7 +432,7 @@ extension DSFDropFilesView {
 
 	func backgroundActiveColor() -> CGColor {
 		var color: CGColor!
-		self.performUsingEffectiveAppearance { _ in
+		self.usingEffectiveAppearance {
 			color = NSColor.quaternaryLabelColor.cgColor
 		}
 		return color
@@ -440,7 +440,7 @@ extension DSFDropFilesView {
 
 	func backgroundActiveStrokeColor() -> CGColor {
 		var color: CGColor!
-		self.performUsingEffectiveAppearance { _ in
+		self.usingEffectiveAppearance {
 			color = NSColor.secondaryLabelColor.cgColor
 		}
 		return color
