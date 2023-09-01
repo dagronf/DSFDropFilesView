@@ -170,7 +170,7 @@ extension DSFDropFilesView.SwiftUI: NSViewRepresentable {
 	public func updateNSView(_ nsView: DSFDropFilesView, context _: Context) {
 		if self.icon !== nsView.icon {
 			nsView.icon = self.icon
-			nsView.showIcon = (nsView.icon == nil)
+			nsView.showIcon = (nsView.icon != nil)
 		}
 
 		UpdateIfNotEqual(&nsView.isEnabled, self.isEnabled)
