@@ -89,6 +89,12 @@ import DSFAppearanceManager
 		}
 	}
 
+	/// The font to use for the label
+	@IBInspectable public var labelFont: NSFont? {
+		get { self.imageLabel.font }
+		set { self.imageLabel.font = newValue }
+	}
+
 	/// Display a border around the drop target
 	@IBInspectable public var isBordered: Bool = true {
 		didSet {
@@ -115,11 +121,13 @@ import DSFAppearanceManager
 
 	// MARK: - Initialization
 
+	/// Create a drop view
 	override public init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.configureControl()
 	}
 
+	/// Create a drop view
 	required public init?(coder: NSCoder) {
 		super.init(coder: coder)
 		self.configureControl()
@@ -127,10 +135,6 @@ import DSFAppearanceManager
 
 	deinit {
 		DSFAppearanceCache.shared.deregister(self)
-	}
-
-	@objc public func setLabelFont(_ font: NSFont) {
-		self.imageLabel.font = font
 	}
 
 	// MARK: - Private definitions
@@ -224,7 +228,7 @@ import DSFAppearanceManager
 // MARK: - Action callbacks
 
 extension DSFDropFilesView {
-	@objc func selectFiles(_: Any) {
+	@objc func selectFiles(_ sender: Any) {
 		if let userSelectedFiles = self.dropDelegate?.dropFilesViewWantsSelectFiles {
 			userSelectedFiles(self)
 		}

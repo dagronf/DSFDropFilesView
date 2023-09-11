@@ -175,6 +175,7 @@ extension DSFDropFilesView.SwiftUI: NSViewRepresentable {
 
 		UpdateIfNotEqual(&nsView.isEnabled, self.isEnabled)
 		UpdateIfNotEqual(&nsView.label, self.iconLabel)
+		UpdateIfNotEqual(&nsView.labelFont, self.iconLabelFont)
 		UpdateIfNotEqual(&nsView.selectFilesButtonLabel, self.selectFilesLabel)
 		UpdateIfNotEqual(&nsView.allowsMultipleDrop, self.allowsMultipleDrop)
 		UpdateIfNotEqual(&nsView.selectFilesButtonIsLink, self.selectFilesButtonIsLink)
@@ -183,8 +184,6 @@ extension DSFDropFilesView.SwiftUI: NSViewRepresentable {
 		UpdateIfNotEqual(&nsView.isAnimated, self.displayProperties.isAnimated)
 		UpdateIfNotEqual(&nsView.lineWidth, self.displayProperties.lineWidth)
 		UpdateIfNotEqual(&nsView.cornerRadius, self.displayProperties.cornerRadius)
-
-		nsView.setLabelFont(self.iconLabelFont)
 	}
 }
 
