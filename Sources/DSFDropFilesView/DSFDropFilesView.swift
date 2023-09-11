@@ -47,35 +47,35 @@ import DSFAppearanceManager
 	}
 
 	/// Do we support dropping multiple files at once?
-	@IBInspectable var allowsMultipleDrop: Bool = true {
+	@IBInspectable public var allowsMultipleDrop: Bool = true {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
 	/// The label for the 'select files...' button.  If empty, the button is not displayed.
-	@IBInspectable var selectFilesButtonLabel: String = "" {
+	@IBInspectable public var selectFilesButtonLabel: String = "" {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
 	/// If the select files button is shown, do we display it as a hyperlink or a regular button?
-	@IBInspectable var selectFilesButtonIsLink: Bool = true {
+	@IBInspectable public var selectFilesButtonIsLink: Bool = true {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
 	/// Should the drop target display an icon.
-	@IBInspectable var showIcon: Bool = true {
+	@IBInspectable public var showIcon: Bool = true {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
 	/// The image to be displayed.
-	@IBInspectable var icon: NSImage? = DSFDropFilesView.StaticImage {
+	@IBInspectable public var icon: NSImage? = DSFDropFilesView.StaticImage {
 		didSet {
 			self.imageView.image = self.icon
 			self.syncImage()
@@ -83,14 +83,14 @@ import DSFAppearanceManager
 	}
 
 	/// Display a informational label. If empty, the label is hidden.
-	@IBInspectable var label: String = "" {
+	@IBInspectable public var label: String = "" {
 		didSet {
 			self.syncTitle()
 		}
 	}
 
 	/// Display a border around the drop target
-	@IBInspectable var isBordered: Bool = true {
+	@IBInspectable public var isBordered: Bool = true {
 		didSet {
 			self.outerBoundary.isHidden = !self.isBordered
 			self.syncTitle()
@@ -98,29 +98,29 @@ import DSFAppearanceManager
 	}
 
 	/// Width of the border line around the control
-	@IBInspectable var lineWidth: CGFloat = 2 {
+	@IBInspectable public var lineWidth: CGFloat = 2 {
 		didSet {
 			self.outerBoundary.lineWidth = self.lineWidth
 		}
 	}
 
 	/// The corner radius for the border
-	@IBInspectable var cornerRadius: CGFloat = 4
+	@IBInspectable public var cornerRadius: CGFloat = 4
 	var borderInset: CGFloat {
 		return self.cornerRadius / 2.0
 	}
 
 	/// Should we animate the border when we can drop?
-	@IBInspectable var isAnimated: Bool = true
+	@IBInspectable public var isAnimated: Bool = true
 
 	// MARK: - Initialization
 
-	override init(frame frameRect: NSRect) {
+	override public init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.configureControl()
 	}
 
-	required init?(coder: NSCoder) {
+	required public init?(coder: NSCoder) {
 		super.init(coder: coder)
 		self.configureControl()
 	}
@@ -129,7 +129,7 @@ import DSFAppearanceManager
 		DSFAppearanceCache.shared.deregister(self)
 	}
 
-	func setLabelFont(_ font: NSFont) {
+	@objc public func setLabelFont(_ font: NSFont) {
 		self.imageLabel.font = font
 	}
 
