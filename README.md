@@ -4,7 +4,7 @@
 
 A simple view class for dropping files onto. Supporting Swift, SwiftUI and Objective-C.
 
-![](https://img.shields.io/github/v/tag/dagronf/DSFDropFilesView) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/github/v/tag/dagronf/DSFDropFilesView) ![](https://img.shields.io/badge/macOS-10.13+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 
@@ -112,43 +112,12 @@ DSFDropFilesView.SwiftUI(
 )
 ```
 
-## History and changes
-
-### `2.0.0`
-
-* Updated to use [DSFAppearanceManager](https://github.com/dagronf/DSFAppearanceManager) for handling display changes
-* Removed warnings for newer versions of Xcode.
-* Added separate dynamic/static versions of the library
-
-### `1.1.0`
-
-#### SwiftUI
-
-Added a SwiftUI Wrapper
-
-#### Select files button
-
-* Added `selectFilesButtonLabel` to allow the user to specify the 'select files' text. Removes the need for the package to provide its own localizations -- the user can provide them if needed.
-* Removed the `selectFiles` property, as it can now be inferred from the `selectFilesButtonLabel` content.
-* Added `selectFilesButtonIsLink` to display the 'select files' button in a hyperlink style (blue underlined) or a standard button.
-
-#### General
-
-* Renamed `multipleSelect` to `allowsMultipleDrop`
-* Renamed `cornerWidth` to `cornerRadius`
-* Renamed `animated` to `isAnimated`
-* Removed localizations file (no longer needed)
-
-### `1.0.0`
-
-* Initial release
-
 ## License
 
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2024 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
