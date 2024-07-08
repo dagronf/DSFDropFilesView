@@ -1,11 +1,11 @@
-// swift-tools-version:5.3
+// swift-tools-version: 5.4
 
 import PackageDescription
 
 let package = Package(
 	name: "DSFDropFilesView",
 	platforms: [
-		.macOS(.v10_11)
+		.macOS(.v10_13)
 	],
 	products: [
 		.library(name: "DSFDropFilesView", targets: ["DSFDropFilesView"]),
@@ -13,7 +13,7 @@ let package = Package(
 		.library(name: "DSFDropFilesView-shared", type: .dynamic, targets: ["DSFDropFilesView"]),
 	],
 	dependencies: [
-		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "3.3.0")
+		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "3.4.2")
 	],
 	targets: [
 		.target(

@@ -462,7 +462,7 @@ extension DSFDropFilesView {
 		let lineDashPhaseAnimation = CABasicAnimation(keyPath: "lineDashPhase")
 		lineDashPhaseAnimation.byValue = 8.0
 		lineDashPhaseAnimation.duration = 0.75
-		lineDashPhaseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+		lineDashPhaseAnimation.timingFunction = CAMediaTimingFunction(name: .linear)
 		lineDashPhaseAnimation.repeatCount = .greatestFiniteMagnitude
 
 		self.outerBoundary.add(lineDashPhaseAnimation, forKey: "lineDashPhaseAnimation")
