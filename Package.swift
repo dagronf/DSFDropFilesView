@@ -13,7 +13,7 @@ let package = Package(
 		.library(name: "DSFDropFilesView-shared", type: .dynamic, targets: ["DSFDropFilesView"]),
 	],
 	dependencies: [
-		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "3.4.2")
+		.package(url: "https://github.com/dagronf/DSFAppearanceManager", from: "3.5.0")
 	],
 	targets: [
 		.target(
